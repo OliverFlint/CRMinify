@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMinify", "CRMinify\CRMinify.csproj", "{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs31
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CRMinify\\CRMinify.csproj
+		SccProjectName1 = CRMinify
+		SccLocalPath1 = CRMinify
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CRMinify.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Debug|x86.ActiveCfg = Debug|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Debug|x86.Build.0 = Debug|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Release|Any CPU.ActiveCfg = Release|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Release|Mixed Platforms.Build.0 = Release|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Release|x86.ActiveCfg = Release|x86
+		{EC829774-FC2D-47EC-9D52-D0CE0E89D88F}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
