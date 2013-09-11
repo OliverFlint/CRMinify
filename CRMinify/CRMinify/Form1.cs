@@ -127,7 +127,7 @@ namespace CRMinify
                 ColumnSet = new ColumnSet(true)
             };
             query.AddAttributeValue("isvisible", true);
-            query.AddAttributeValue("ismanaged", true);
+            //query.AddAttributeValue("ismanaged", true);
 
             var results = this.service.RetrieveMultiple(query);
             if (results.Entities.Count > 0)
@@ -138,7 +138,7 @@ namespace CRMinify
             solutionComboBox.DisplayMember = "Text";
             solutionComboBox.ValueMember = "Value";
 
-            solutionComboBox.Items.Add(new SolutionComboBoxItem("Default", Guid.Empty));
+            //solutionComboBox.Items.Add(new SolutionComboBoxItem("Default", Guid.Empty));
 
             foreach (var item in results.Entities)
             {
@@ -149,26 +149,45 @@ namespace CRMinify
         private void listWebResources()
         {
             SolutionComboBoxItem selectedItem = (SolutionComboBoxItem)solutionComboBox.SelectedItem;
-            QueryExpression query = new QueryExpression("webresource")
-            {
-                ColumnSet = new ColumnSet(true)
-            };
-            query.AddOrder("displayname", OrderType.Ascending);
+            //QueryExpression query = new QueryExpression("webresource")
+            //{
+            //    ColumnSet = new ColumnSet(true)
+            //};
+            //query.AddOrder("displayname", OrderType.Ascending);
 
-            if (selectedItem.Value != Guid.Empty)
-            {
-                FilterExpression filter1 = new FilterExpression();
-                filter1.AddCondition("solutionid", ConditionOperator.Equal, selectedItem.Value);
-                query.Criteria.AddFilter(filter1);
-            }
+            //if (selectedItem.Value != Guid.Empty)
+            //{
+            //    FilterExpression filter1 = new FilterExpression();
+            //    filter1.AddCondition("solutionid", ConditionOperator.Equal, selectedItem.Value);
+            //    query.Criteria.AddFilter(filter1);
+            //}
 
-            FilterExpression filter2 = new FilterExpression();
-            filter2.AddCondition("webresourcetype", ConditionOperator.Equal, 2);
-            filter2.AddCondition("webresourcetype", ConditionOperator.Equal, 3);
-            filter2.FilterOperator = LogicalOperator.Or;
-            query.Criteria.AddFilter(filter2);
+            //FilterExpression filter2 = new FilterExpression();
+            //filter2.AddCondition("webresourcetype", ConditionOperator.Equal, 2);
+            //filter2.AddCondition("webresourcetype", ConditionOperator.Equal, 3);
+            //filter2.FilterOperator = LogicalOperator.Or;
+            //query.Criteria.AddFilter(filter2);
 
-            var results = this.service.RetrieveMultiple(query);
+            var fetchXml = @"<fetch mapping='logical' count='500' version='1.0'>
+                        <entity name='webresource'>
+                            <attribute name='displayname' />
+                            <attribute name='name' />
+                            <attribute name='webresourcetype' />
+                            <attribute name='ismanaged' />
+                            <link-entity name='solutioncomponent' from='objectid' to='webresourceid'>
+                                <filter>
+                                    <condition attribute='solutionid' operator='eq' value='" + selectedItem.Value + @"' />
+                                </filter>
+                            </link-entity>
+                            <filter type='or'>
+                                <condition attribute='webresourcetype' operator='eq' value='2' />
+                                <condition attribute='webresourcetype' operator='eq' value='3' />
+                            </filter>
+                        </entity>
+                    </fetch>";
+            FetchExpression fetchQuery = new FetchExpression(fetchXml);
+
+            var results = this.service.RetrieveMultiple(fetchQuery);
             if (results.Entities.Count > 0)
             {
                 webResourceListView.Items.Clear();
